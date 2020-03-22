@@ -54,7 +54,7 @@ chanindx    = q.chanindx;
 % =========================================================================
 % setup the instance of the object
 % --------------------------------
-mef_ft = MEFFieldTrip3p0(filename); % dealing MEF 3.0 data for FieldTrip
+mef_ft = MEFFieldTrip_3p0(filename); % dealing MEF 3.0 data for FieldTrip
 
 % get the desired information
 % ---------------------------
