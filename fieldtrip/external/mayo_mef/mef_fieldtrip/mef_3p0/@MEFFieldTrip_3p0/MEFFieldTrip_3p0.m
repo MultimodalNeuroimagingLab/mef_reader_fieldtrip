@@ -20,7 +20,7 @@ classdef MEFFieldTrip_3p0 < MEFSession_3p0 & MEFFieldTrip
     % See also .
     
     % Copyright 2020 Richard J. Cui. Created: Sat 03/21/2020 10:35:23.147 PM
-    % $Revision: 0.1 $  $Date: Sat 03/21/2020 10:35:23.147 PM $
+    % $Revision: 0.2 $  $Date: Sun 03/22/2020  7:54:27.234 AM $
     %
     % Multimodel Neuroimaging Lab (Dr. Dora Hermes)
     % Mayo Clinic St. Mary Campus
@@ -32,7 +32,7 @@ classdef MEFFieldTrip_3p0 < MEFSession_3p0 & MEFFieldTrip
     % properties
     % =====================================================================
     properties
-
+        FileType        % file tpe in field trip
     end
     
     % =====================================================================
@@ -45,12 +45,13 @@ classdef MEFFieldTrip_3p0 < MEFSession_3p0 & MEFFieldTrip
             % parse inputs
             % ------------
             % default
+            default_sp = '';
             default_pw = struct('Level1Password', '',...
                 'Level2Password', '', 'AccessLevel', 1);
             
             % parse rules
             p = inputParser;
-            p.addRequired('sesspath', @isstr);
+            p.addOptional('sesspath', default_sp, @ischar);
             p.addOptional('password', default_pw, @isstruct);
             
             % parse the return the results
@@ -63,7 +64,15 @@ classdef MEFFieldTrip_3p0 < MEFSession_3p0 & MEFFieldTrip
             % ------------------------------
             % call super class
             this@MEFFieldTrip;
-            this@MEFSession_3p0(sesspath, password);
+            this@MEFSession_3p0;
+            
+            % set class properties
+            this.FileType = 'mayo_mef30';
+            
+            % set session information
+            if ~isempty(sesspath)
+                this.setSessionInfo(sesspath, password);
+            end % if
         end %function
     end % methods
     
@@ -71,11 +80,13 @@ classdef MEFFieldTrip_3p0 < MEFSession_3p0 & MEFFieldTrip
     % methods
     % =====================================================================
     methods (Static = true)
-        
+
     end % 
     
+    % other methods
+    % -------------
     methods
-        
+        [sesspath, channames] = findSessPath(this, filename) % find session path and channel name        
     end % methods
 end
 
