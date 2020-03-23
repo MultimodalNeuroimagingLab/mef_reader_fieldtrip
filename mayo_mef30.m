@@ -34,7 +34,7 @@ function mayo_out = mayo_mef30(varargin)
 % See also ft_filetype, ft_read_header, ft_read_event, ft_read_data.
 
 % Copyright 2020 Richard J. Cui. Created: Sat 03/21/2020  5:26:02.846 PM
-% $Revision: 0.1 $  $Date: Sat 03/21/2020  5:26:02.857 PM $
+% $Revision: 0.2 $  $Date: Sun 03/22/2020  8:14:59.010 AM $
 %
 % Multimodel Neuroimaging Lab (Dr. Dora Hermes)
 % Mayo Clinic St. Mary Campus
@@ -62,20 +62,23 @@ chanindx    = q.chanindx;
 % =========================================================================
 % setup the instance of the object
 % --------------------------------
-[sesspath, chan_sel] = MEFFieldTrip_3p0.findSessPath(filename);
-mef_ft = MEFFieldTrip_3p0(sesspath); % dealing MEF 3.0 data for FieldTrip
+mef_ft = MEFFieldTrip_3p0; % dealing MEF 3.0 data for FieldTrip
+[sesspath, channames] = mef_ft.findSessPath(filename);
+mef_ft.setSessionInfo(sesspath, password);
 
 % get the desired information
 % ---------------------------
 switch nargin
     case {1, 2}
         % get header
-        mayo_out = mef_ft.getHeader(chan_sel, password);
+        mayo_out = mef_ft.getHeader(channames);
     case 3
-        mayo_out = mef_ft.getEvent(chan_sel, password, hdr);
+        % get event
+        mayo_out = mef_ft.getEvent(channames);
     case 6
-        mayo_out = mef_ft.getData(chan_sel, password, hdr, begsample,...
-            endsample, chanindx);
+        % get data
+        mayo_out = mef_ft.getData(channames, hdr.sampleunit, begsample, endsample,...
+            chanindx);
     otherwise
         % error
         error('FieldTrip:mayo_mef30:invalidInput',...
@@ -104,7 +107,7 @@ p.addOptional('password', default_pw, @isstruct);
 p.addOptional('hdr', default_hr, @isstruct);
 p.addOptional('begsample', default_bs, @isnumeric);
 p.addOptional('endsample', default_es, @isnumeric);
-p.addOptional('chanindx', default_ci, @isstruct);
+p.addOptional('chanindx', default_ci, @isnumeric);
 
 % parse and return
 p.parse(varargin{:});
