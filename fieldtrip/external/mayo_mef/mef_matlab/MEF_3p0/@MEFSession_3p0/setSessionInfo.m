@@ -21,7 +21,7 @@ function setSessionInfo(this, sesspath, password)
 % See also .
 
 % Copyright 2020 Richard J. Cui. Created: Sat 03/21/2020 11:09:38.008 PM
-% $Revision: 0.1 $  $Date: Sat 03/21/2020 11:09:38.023 PM $
+% $Revision: 0.2 $  $Date: Sun 03/22/2020  1:50:17.958 PM $
 %
 % Multimodel Neuroimaging Lab (Dr. Dora Hermes)
 % Mayo Clinic St. Mary Campus
@@ -61,7 +61,7 @@ p.addRequired('sesspath', @ischar);
 p.addRequired('password', @isstruct);
 
 % parse and return
-p.parse;
+p.parse(varargin{:});
 q = p.Results;
 
 end % function
