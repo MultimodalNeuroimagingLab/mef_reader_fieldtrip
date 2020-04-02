@@ -1000,6 +1000,10 @@ switch dataformat
         hdr.sampleunit = 'index';
         dat = mayo_mef30(filename, password, hdr, begsample, endsample, chanindx);
         
+    case 'mayo_mef21'
+        hdr.sampleunit = 'index';
+        dat = mayo_mef21(filename, password, hdr, begsample, endsample, chanindx);
+        
   case 'mega_neurone'
     % this is fast but memory inefficient, since the header contains all data and events
     if isfield(hdr.orig, 'data')
