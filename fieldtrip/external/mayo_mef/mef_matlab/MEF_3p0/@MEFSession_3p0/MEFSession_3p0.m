@@ -38,7 +38,10 @@ classdef MEFSession_3p0 < MEFSession & MultiscaleElectrophysiologyFile_3p0
     properties
         MetaData            % session metadata (see read_mef_session_metadata_3p0.m
                             % for the detail)
-    end
+        PathToSession       % not include session name and extension
+        SessionName         % not include extension
+        SessionExt          % session extension (includes the '.')
+   end
     
     % =====================================================================
     % methods

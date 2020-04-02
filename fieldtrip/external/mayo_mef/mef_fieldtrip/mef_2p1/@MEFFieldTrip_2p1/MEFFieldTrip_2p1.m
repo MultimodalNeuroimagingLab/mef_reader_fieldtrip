@@ -67,10 +67,9 @@ classdef MEFFieldTrip_2p1 < MEFSession_2p1 & MEFFieldTrip
     % other methods
     % -------------
     methods
-        [sesspath, channames] = findSessPath(this, filename) % find session path and channel name
-        hdr = getHeader(this, channames) % get header information of MEF 3.0 session
-        evt = getEvent(this, channames) % get MEF 3.0 events for FieldTrip
-        dat = getData(this, varargin) % read data from MEF 3.0 dataset for FieldTrip
+        hdr = getHeader(this, channames) % get header information of MEF 2.1 session
+        evt = getEvent(this, channames) % get MEF 2.1 events for FieldTrip
+        dat = getData(this, varargin) % read data from MEF 2.1 dataset for FieldTrip
     end % methods
 end
 

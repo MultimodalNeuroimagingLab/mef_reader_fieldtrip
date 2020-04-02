@@ -1359,6 +1359,12 @@ switch eventformat
         end
         event = mayo_mef30(filename, password, hdr);
         
+    case 'mayo_mef21'
+        if isempty(hdr)
+            hdr = ft_read_header(filename, 'password', password);
+        end % if
+        event = mayo_mef21(filename, password, hdr);
+        
   case 'mega_neurone'
     if isempty(hdr)
       hdr = ft_read_header(filename);
