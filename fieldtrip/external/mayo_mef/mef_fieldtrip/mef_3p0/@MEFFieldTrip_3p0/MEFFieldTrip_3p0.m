@@ -44,35 +44,16 @@ classdef MEFFieldTrip_3p0 < MEFSession_3p0 & MEFFieldTrip
             % =================
             % parse inputs
             % ------------
-            % default
-            default_sp = '';
-            default_pw = struct('Level1Password', '',...
-                'Level2Password', '', 'AccessLevel', 1);
-            
-            % parse rules
-            p = inputParser;
-            p.addOptional('sesspath', default_sp, @ischar);
-            p.addOptional('password', default_pw, @isstruct);
-            
-            % parse the return the results
-            p.parse(varargin{:});
-            q = p.Results;
-            sesspath = q.sesspath;
-            password = q.password;
             
             % operations during construction
             % ------------------------------
             % call super class
             this@MEFFieldTrip;
-            this@MEFSession_3p0;
+            this@MEFSession_3p0(varargin{:});
             
             % set class properties
             this.FileType = 'mayo_mef30';
             
-            % set session information
-            if ~isempty(sesspath)
-                this.setSessionInfo(sesspath, password);
-            end % if
         end %function
     end % methods
     

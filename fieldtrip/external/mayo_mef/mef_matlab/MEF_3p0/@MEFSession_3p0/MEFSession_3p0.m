@@ -55,7 +55,7 @@ classdef MEFSession_3p0 < MEFSession & MultiscaleElectrophysiologyFile_3p0
             
             % parse rules
             p = inputParser;
-            p.addOptional('sesspath', default_sp, @isstr);
+            p.addOptional('sesspath', default_sp, @ischar);
             p.addOptional('password', default_pw, @isstruct)
             
             % parse and retrun the results

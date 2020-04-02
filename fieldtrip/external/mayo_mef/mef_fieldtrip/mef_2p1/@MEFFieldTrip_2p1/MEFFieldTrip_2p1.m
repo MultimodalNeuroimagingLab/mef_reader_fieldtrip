@@ -49,7 +49,7 @@ classdef MEFFieldTrip_2p1 < MEFSession_2p1 & MEFFieldTrip
             % ------------------------------
             % call super class
             this@MEFFieldTrip;
-            this@MEFSession_2p1(varargin);
+            this@MEFSession_2p1(varargin{:});
             
             % set class properties
             this.FileType = 'mayo_mef21';
