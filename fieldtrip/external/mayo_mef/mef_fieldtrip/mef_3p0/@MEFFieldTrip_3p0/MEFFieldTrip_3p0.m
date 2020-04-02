@@ -2,11 +2,12 @@ classdef MEFFieldTrip_3p0 < MEFSession_3p0 & MEFFieldTrip
     % MEFFIELDTRIP_3P0 process MEF 3.0 in FieldTrip
     % 
     % Syntax:
+    %   this = MEFFieldTrip_3p0
     %   this = MEFFieldTrip_3p0(filename)
     %   this = MEFFieldTrip_3p0(__, password)
     %
     % Input(s):
-    %   filename    - [char] session path or channel path or dataset name
+    %   filename    - [char] (opt) session path or channel path or dataset name
     %   password    - [struct] (opt) password (default: empty)
     %                 .Level1Password
     %                 .Level2Password
@@ -67,7 +68,6 @@ classdef MEFFieldTrip_3p0 < MEFSession_3p0 & MEFFieldTrip
     % other methods
     % -------------
     methods
-        [sesspath, channames] = findSessPath(this, filename) % find session path and channel name
         hdr = getHeader(this, channames) % get header information of MEF 3.0 session
         evt = getEvent(this, channames) % get MEF 3.0 events for FieldTrip
         dat = getData(this, varargin) % read data from MEF 3.0 dataset for FieldTrip

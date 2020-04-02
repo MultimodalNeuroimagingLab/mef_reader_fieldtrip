@@ -34,7 +34,7 @@ function mayo_out = mayo_mef30(varargin)
 % See also ft_filetype, ft_read_header, ft_read_event, ft_read_data.
 
 % Copyright 2020 Richard J. Cui. Created: Sat 03/21/2020  5:26:02.846 PM
-% $Revision: 0.3 $  $Date: Wed 03/25/2020  8:53:17.504 PM $
+% $Revision: 0.4 $  $Date: Thu 04/02/2020 11:03:11.543 AM $
 %
 % Multimodel Neuroimaging Lab (Dr. Dora Hermes)
 % Mayo Clinic St. Mary Campus
@@ -62,9 +62,8 @@ chanindx    = q.chanindx;
 % =========================================================================
 % setup the instance of the object
 % --------------------------------
-mef_ft = MEFFieldTrip_3p0; % dealing MEF 3.0 data for FieldTrip
-[sesspath, channames] = mef_ft.findSessPath(filename);
-mef_ft.setSessionInfo(sesspath, password);
+mef_ft = MEFFieldTrip_3p0(filename, password); % dealing MEF 3.0 data for FieldTrip
+channames = mef_ft.SelectedChannel;
 
 % get the desired information
 % ---------------------------
