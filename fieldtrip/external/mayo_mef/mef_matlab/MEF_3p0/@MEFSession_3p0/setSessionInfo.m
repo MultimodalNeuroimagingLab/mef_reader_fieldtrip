@@ -43,11 +43,20 @@ password = q.password;
 % =========================================================================
 this.SessionPath = sesspath; % set session path directory
 this.Password = password; % set password
-metadata = this.read_mef_session_metadata_3p0;
-this.MetaData = metadata;
 this.get_sess_parts;
 this.get_sessinfo;
 
+% make sure that sequence of 'time_series_channels' is the same as that of
+% the names in property ChannelName
+metadata = this.read_mef_session_metadata_3p0;
+meta_ch_name = convertCharsToStrings({metadata.time_series_channels.name});
+[Lia, Locb] = ismember(meta_ch_name, this.ChannelName);
+if ~all(Lia)
+    error('MEFSession_3p0:setSessionInfo:invalidChannelName',...
+        'invalid channels names')
+end % if
+metadata.time_series_channels = metadata.time_series_channels(Locb);
+this.MetaData = metadata;
 end % function setSessionInfo
 
 % =========================================================================
