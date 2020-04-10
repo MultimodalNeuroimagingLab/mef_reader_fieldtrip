@@ -36,9 +36,18 @@ ylabel('Amplitude')
 %% read the MEF 3.0 data using FieldTrip routines
 % read data header with ft_read_header()
 % --------------------------------------
-hdr = ft_read_header(sesspath, 'password', password);
+% sort channel using key-value pair: 'SortChannel' can be either 'alphebat'
+% (default) or 'number', which sorts the channel according to the
+% acqusition_channel_number.
+hdr = ft_read_header(sesspath, 'password', password, 'SortChannel', 'number');
 
 % read a specific channel with ft_read_data()
+% Note: if the key-value 'SortChannel' is not provided to ft_read_data(),
+% the function uses header.SortChannel. If 'header' is not provided, the
+% function use default 'alphabet'.  If both 'header' and 'SortChannel' are
+% provided, there will be an warning of the conflict and the function
+% chooses header.SortChannel. The same rule is applied to function
+% ft_read_event().
 chpath = fullfile(sesspath, [hdr.label{4}, '.timd']);
 x = ft_read_data(chpath, 'begsample', 1, 'endsample', 2561, 'header', hdr,...
     'password', password, 'chanindx', 1); % don't ommit 'chanindx'
@@ -56,8 +65,13 @@ in_unit = 'second';
 be_second = [0, 10, 0]; % 10-second time of data from the start
 out_unit = 'index';
 be_sample = mef_ft.SessionUnitConvert(be_second, in_unit, out_unit);
-dat = ft_read_data(sesspath, 'begsample', be_sample(1), 'endsample', be_sample(2),...
-    'header', hdr, 'password', password, 'chanindx', [4 1 2 3]);
+dat = ft_read_data(sesspath,...
+    'begsample', be_sample(1),...
+    'endsample', be_sample(2),...
+    'header', hdr,...
+    'password', password,...
+    'chanindx', [4 1 2 3]); % the order of read data can be decided by
+                            % key-value 'chanindx'
 
 t = linspace(be_second(1), be_second(2), be_sample(2)-be_sample(1)+1);
 figure
@@ -82,10 +96,10 @@ brwview = ft_databrowser(cfg, dat_ieeg);
 
 %% Copyright 2020 Richard J. Cui
 % Created: Sun 03/22/2020  9:03:27.318 PM
-% Revision: 0.4  Date: Sat 04/04/2020  6:20:15.049 PM
+% Revision: 0.5  Date: Fri 04/10/2020 12:33:09.126 AM
 %
 % Multimodel Neuroimaging Lab (Dr. Dora Hermes)
 % Mayo Clinic St. Mary Campus
 % Rochester, MN 55905
 %
-% Email: richard.cui@utoronto.ca
+% Email: richard.cui@utoronto.ca (permanent), Cui.Jie@mayo.edu (official)

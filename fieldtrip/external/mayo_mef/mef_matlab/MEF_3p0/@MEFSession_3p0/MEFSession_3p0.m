@@ -5,6 +5,7 @@ classdef MEFSession_3p0 < MEFSession & MultiscaleElectrophysiologyFile_3p0
     %   this = MEFSession_3p0
     %   this = __(filename)
     %   this = __(filename, password)
+    %   this = __(__, 'SortChannel', sort_channel)
     %
     % Input(s):
     %   filename    - [str] (opt) MEF 3.0 session path, channel or data file
@@ -15,7 +16,10 @@ classdef MEFSession_3p0 < MEFSession & MultiscaleElectrophysiologyFile_3p0
     %                 .Level1Password (default = '')
     %                 .Level2Password (default = '')
     %                 .AccessLevel (default = 1)
-    % 
+    %   sort_channel- [char] (opt) sort channel according to either 'alphabet' of
+    %                 the channel names or 'number' of the acquisiton
+    %                 channel number (default = 'alphabet')
+    %
     % Output(s):
     %   this        - [obj] MEFSession_3p0 object
     %
@@ -57,17 +61,20 @@ classdef MEFSession_3p0 < MEFSession & MultiscaleElectrophysiologyFile_3p0
             default_sp = ''; % default session path
             default_pw = struct('Level1Password', '', 'Level2Password', '',...
                 'AccessLevel', 1);
+            default_sc = 'alphabet';
             
             % parse rules
             p = inputParser;
             p.addOptional('filename', default_sp, @ischar);
             p.addOptional('password', default_pw, @isstruct)
+            p.addParameter('SortChannel', default_sc, @ischar)
             
             % parse and retrun the results
             p.parse(varargin{:});
             q = p.Results;
             filename = q.filename;
             password = q.password;
+            sort_channel = q.SortChannel;
             
             % operations during construction
             % ------------------------------
@@ -86,10 +93,12 @@ classdef MEFSession_3p0 < MEFSession & MultiscaleElectrophysiologyFile_3p0
             % set session info
             [sesspath, channames] = this.findSessPath(filename);
             if ~isempty(sesspath)
-                this.setSessionInfo(sesspath, password);
+                this.setSessionInfo(sesspath, password, sort_channel);
             end % if
-            if ~isempty(channames)
+            if ~isempty(channames) && numel(channames) == 1
                 this.SelectedChannel = channames;
+            else 
+                this.SelectedChannel = this.ChannelName;
             end % if
         end % function
     end % methods
@@ -107,7 +116,7 @@ classdef MEFSession_3p0 < MEFSession & MultiscaleElectrophysiologyFile_3p0
         metadata = read_mef_session_metadata_3p0(this, varargin) % get session metadata of MEF 3.0
         valid_yn = checkSessValid(this, varargin) % check validity of session info
         [X, t] = import_sess(this, varargin) % import session of MEF 3.0 data
-        metadata = setSessionInfo(this, sesspath, password) % set session information
+        metadata = setSessionInfo(this, varargin) % set session information
     end % methods
 end % classdef
 
