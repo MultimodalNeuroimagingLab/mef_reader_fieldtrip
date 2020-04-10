@@ -11,10 +11,26 @@ sesspath = fullfile(fileparts(p), 'mef_3p0.mefd');
 password = struct('Level1Password', 'password1', 'Level2Password',...
     'password2', 'AccessLevel', 2);
 
-%% read the MEF 3.0 data into MATLAB using class MEFSession_3p0
+%% read the MEF 3.0 data into MATLAB using class MEFFieldTrip_3p0
 
 % get the object to read data into MATLAB
-mef_ft = MEFSession_3p0(sesspath, password);
+mef_ft = MEFFieldTrip_3p0(sesspath, password);
+
+% inspect the channels in the session
+% note that the channel names are in alphabetic order, which is the default
+% order
+acq_chan_num = num2str(mef_ft.getAcqChanNumber);
+fprintf('Acqusition channel number: %s\n', acq_chan_num)
+disp('Channel Names: ')
+disp(mef_ft.ChannelName)
+
+% let's sort the channel names according to the number of the acquisition
+% channels
+mef_ft = MEFFieldTrip_3p0(sesspath, password, 'SortChannel', 'number');
+acq_chan_num = num2str(mef_ft.getAcqChanNumber);
+fprintf('Acqusition channel number: %s\n', acq_chan_num)
+disp('Channel Names: ')
+disp(mef_ft.ChannelName)
 
 % now let's import the the first 10 seconds data of two channels 
 % 'Left_Occipital-Ref' and 'left-right_occipital' into MATLAB
