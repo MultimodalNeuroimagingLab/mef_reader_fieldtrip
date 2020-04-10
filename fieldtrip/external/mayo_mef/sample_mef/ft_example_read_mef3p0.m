@@ -48,7 +48,7 @@ xlim([1 256])
 xlabel('Time (sample index)')
 legend(hdr.label{4})
 
-% read data with ft_read_data() but specifying time interval using seconds
+%% read data with ft_read_data() but specifying time interval using seconds
 % -------------------------------------------------------------------------
 % Let's import 10 seconds data at the beginning of the recording with an
 % assumption that the trigger was at 0 second.
