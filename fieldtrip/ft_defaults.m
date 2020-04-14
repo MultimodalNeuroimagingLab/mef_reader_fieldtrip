@@ -333,6 +333,7 @@ if ~isdeployed
       ft_hastoolbox('mayo_mef', 3, 1);
   catch
   end % try
+  
 end
 
 % the toolboxes added by this function should not be removed by FT_POSTAMBLE_HASTOOLBOX
