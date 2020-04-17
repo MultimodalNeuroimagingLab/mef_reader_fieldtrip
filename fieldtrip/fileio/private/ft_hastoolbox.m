@@ -221,7 +221,7 @@ switch toolbox
     %This is to avoid crashes when trying to add SPM to the path
     fallback_toolbox = 'SPM12';
     case 'MAYO_MEF' % MEF 2.1 and MEF 3.0
-        dependency = {};
+        dependency = {'MEFFieldTrip_2p1', 'MEFFieldTrip_3p0'};
   case 'MEG-PD'
     dependency = {'rawdata', 'channames'};
   case 'MEG-CALC'
