@@ -124,6 +124,7 @@ function [metadata, data] = readMef3(sessPath, password, channels, rangeType, va
         % set range defaults
         if ~exist('rangeStart', 'var'), rangeStart = -1;        end
         if ~exist('rangeEnd', 'var'),   rangeEnd = -1;          end
+        ranges = [-1, -1];
         
         % check whether a single range or multiple ranges are given
         if nargin == 5
