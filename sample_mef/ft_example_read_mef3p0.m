@@ -1,7 +1,7 @@
 % FT_EXAMPLE_READ_MEF3P0 an example to read MEF 3.0 data set into FieldTrip
 
 %% set the parameters
-clear
+clearvars
 
 % look for session path of data
 p = mfilename('fullpath');
@@ -51,19 +51,9 @@ ylabel('Amplitude')
 
 %% read the MEF 3.0 data using FieldTrip routines
 % read data header with ft_read_header()
-% --------------------------------------
-% sort channel using key-value pair: 'SortChannel' can be either 'alphebat'
-% (default) or 'number', which sorts the channel according to the
-% acqusition_channel_number.
-hdr = ft_read_header(sesspath, 'password', password, 'SortChannel', 'number');
+hdr = ft_read_header(sesspath, 'password', password);
 
 % read a specific channel with ft_read_data()
-% Note: if the key-value 'SortChannel' is not provided to ft_read_data(),
-% the function uses header.SortChannel. If 'header' is not provided, the
-% function use default 'alphabet'.  If both 'header' and 'SortChannel' are
-% provided, there will be a warning in case of conflict and the function
-% chooses header.SortChannel. The same rule is applied to function
-% ft_read_event().
 chpath = fullfile(sesspath, [hdr.label{4}, '.timd']);
 x = ft_read_data(chpath, 'begsample', 1, 'endsample', 2561, 'header', hdr,...
     'password', password, 'chanindx', 1); % don't ommit 'chanindx'
@@ -74,7 +64,6 @@ xlabel('Time (sample index)')
 legend(hdr.label{4})
 
 %% read data with ft_read_data() but specifying time interval using seconds
-% -------------------------------------------------------------------------
 % Let's import 10 seconds data at the beginning of the recording
 in_unit = 'second';
 be_second = [0, 10]; % 10-second time of data from the start
@@ -97,7 +86,6 @@ legend(hdr.label{4}, hdr.label{1}, hdr.label{2}, hdr.label{3})
 
 
 %% read data with ft_preprocessing()
-% ---------------------------------
 % Let's import 5 trials/epochs. Each trial is 1.50 second long.  The
 % trigger time of the 5 trials are at 0.5, 2.0, 3.5, 5.0 and 6.5 seconds,
 % with the pre-stimulus length of 0.5 second.
@@ -124,7 +112,7 @@ brwview = ft_databrowser(cfg, dat_ieeg);
 
 %% Copyright (c) 2020 MNL group
 % Created on Sun 03/22/2020  9:03:27.318 PM
-% Revision: 0.7  Date: Wed 04/15/2020  9:42:41.842 AM
+% Revision: 0.8  Date: Fri 05/15/2020 12:06:17.656 PM
 %
 % Multimodal Neuroimaging Lab (Dr. Dora Hermes)
 % Mayo Clinic St. Mary Campus
