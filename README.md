@@ -23,6 +23,7 @@ A small sample dataset of MEF 2.1/3.0 is included in **mef_reader_fieldtrip** pa
 After downloading the package, look for the folder `sample_mef`.
 To test the toolbox using the sample data, open `test_mayo_mef.m` under directory `fieldtrip/test` and modify the variables for the locations of the dataset.
 Execute command `test_mayo_mef` in MATLAB.
+Two additional examples of reading MEF dataset, `ft_example_read_mef2p1.m` and `ft_example_read_mef3p0.m` are included in folder `sample_mef` as well.
 
 
 Acknowledgment
