@@ -13,7 +13,7 @@ Installation
 1. Download and install [FieldTrip](https://github.com/fieldtrip/fieldtrip). Assume that the root directory of FieldTrip is `fieldtrip`.
 1. Download [mef_reader_fieldtrip](https://github.com/MultimodalNeuroimagingLab/mef_reader_fieldtrip) package and unzip it if necessary.
 1. If the version of Fieldtrip is not capable of recognizing MEF data type, look for the directory `fieldtrip` in **mef_reader_fieldtrip**f package and then copy it to the root directory of FieldTrip `fieldtrip`.
-1. Otherwise, check the `external` directory of Fieldtrip. If the folder `mayo_mef` exits, go to next step. If not, only copy the folder `mayo_mef` under the directory `external` of **mef_reader_fieldtrip** package to the `external` directory of FieldTrip.
+1. Otherwise, check the `external` directory of Fieldtrip. If the folder `mayo_mef` exists, go to next step. If not, only copy the folder `mayo_mef` under the directory `external` of **mef_reader_fieldtrip** package to the `external` directory of FieldTrip.
 1. In MATLAB, go to the directory `fieldtrip` and type commands `ft_defaults` and `ft_hastoolbox('mayo_mef',1);` to install the toolbox. 
 1. If necessary, make mex files by typing command `make_mayo_mex` in MATLAB command window.
 
