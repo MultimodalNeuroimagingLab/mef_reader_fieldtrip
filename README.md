@@ -21,9 +21,22 @@ Sample data
 ----------------
 A small sample dataset (~17 M) of MEF 2.1/3.0 is included in **mef_reader_fieldtrip** package.
 After downloading the package, look for the folder `sample_mef`.
-To test the toolbox using the sample data, open `test_mayo_mef.m` under directory `fieldtrip/test` and modify the variables for the locations of the dataset.
-Execute command `test_mayo_mef` in MATLAB.
 Two additional examples of reading MEF dataset, `ft_example_read_mef2p1.m` and `ft_example_read_mef3p0.m` are included in folder `sample_mef` as well.
+To test the toolbox using the sample data, open `test_mayo_mef.m` under directory `fieldtrip/test` and modify the variables for the locations of the dataset.
+
+    % =========================================================================
+    % Note of sample dataset
+    % =========================================================================
+    % Go to https://github.com/MultimodalNeuroimagingLab/mef_reader_fieldtrip
+    % and follow the instructions to download the sample dataset. Set the path
+    % to the sample dataset below.
+    
+    %% set path to sample dataset
+    % please set the path to sample dataset
+    mef21_data = '/path/to/sample_mef/mef_2p1';
+    mef30_data = '/path/to/sample_mef/mef_3p0.mefd';
+
+Set the locations of the dataset in the last two lines of above code block and then execute command `test_mayo_mef` in MATLAB.
 
 
 Acknowledgment
