@@ -19,7 +19,7 @@ Installation
 
 Sample data
 ----------------
-A small sample dataset of MEF 2.1/3.0 is included in **mef_reader_fieldtrip** package.
+A small sample dataset (~17 M) of MEF 2.1/3.0 is included in **mef_reader_fieldtrip** package.
 After downloading the package, look for the folder `sample_mef`.
 To test the toolbox using the sample data, open `test_mayo_mef.m` under directory `fieldtrip/test` and modify the variables for the locations of the dataset.
 Execute command `test_mayo_mef` in MATLAB.
