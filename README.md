@@ -1,3 +1,5 @@
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+
 MEF 2.1/3.0 Fieldtrip External Toolbox (mef_reader_fieldtrip)
 =============================================================
 
