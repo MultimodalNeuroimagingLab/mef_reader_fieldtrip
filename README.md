@@ -12,6 +12,8 @@ The backbone of the toolbox is a C-MEX package which is also employed in [MEF_im
 Installation
 ------------
 1. Download and install [FieldTrip](https://github.com/fieldtrip/fieldtrip). Assume that the root directory of FieldTrip is `fieldtrip`.
+(_Please note that at present, **mef_reader_fieldtrip** has not been merged officially into Fieldtrip.
+You may download a fork of Fieldtrip [here](https://github.com/MultimodalNeuroimagingLab/fieldtrip/tree/mef_reader), where the toolbox has been installed_).
 1. Download [mef_reader_fieldtrip](https://github.com/MultimodalNeuroimagingLab/mef_reader_fieldtrip) package and unzip it if necessary.
 1. If the version of Fieldtrip is not capable of recognizing MEF data type, look for the directory `fieldtrip` in **mef_reader_fieldtrip**f package and then copy it to the root directory of FieldTrip `fieldtrip`.
 1. Otherwise, check the `external` directory of Fieldtrip. If the folder `mayo_mef` exists, go to next step. If not, only copy the folder `mayo_mef` under the directory `external` of **mef_reader_fieldtrip** package to the `external` directory of FieldTrip.
