@@ -6,6 +6,7 @@ Introduction
 **mef_reader_fieldtrip** is a [Fieldtrip](http://www.fieldtriptoolbox.org/) external toolbox that reads data compressed in Multiscale Electrophysiology Format (or Mayo EEG File, MEF, see Acknowledgment). 
 Current version is capable of reading [MEF Version 2.1](https://github.com/benbrinkmann/mef_lib_2_1) and [MEF version 3.0](https://msel.mayo.edu/codes.html) files.
 The code of **mef_reader_fieldtrip** is hosted on Github of [Multimodal Neuroimaging Lab](https://github.com/MultimodalNeuroimagingLab) at the repository [mef_reader_fieldtrip](https://github.com/MultimodalNeuroimagingLab/mef_reader_fieldtrip).
+The backbone of the toolbox is a C-MEX package which is also employed in [MEF_import](https://github.com/jiecui/MEF_import) to read MEF datasets into [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php).
 
 
 Installation
@@ -19,10 +20,10 @@ Installation
 
 Sample data
 ----------------
-A small sample dataset (~17 M) of MEF 2.1/3.0 is included in **mef_reader_fieldtrip** package.
-After downloading the package, look for the folder `sample_mef`.
+A small sample dataset (~17 M) of MEF 2.1/3.0 is provided from this [link](https://app.box.com/s/wwkdwl51joavrblu40v075bz2gb5fwrf) on box.com.
+Look for the folder `sample_mef`and download it to your local computer.
 Two additional examples of reading MEF dataset, `ft_example_read_mef2p1.m` and `ft_example_read_mef3p0.m` are included in folder `sample_mef` as well.
-To test the toolbox using the sample data, open `test_mayo_mef.m` under directory `fieldtrip/test` and modify the variables for the locations of the dataset.
+To test the toolbox using the sample data, open `test_mayo_mef.m` under directory `fieldtrip/test` and modify the variables according to the locations of the dataset.
 
     % =========================================================================
     % Note of sample dataset
