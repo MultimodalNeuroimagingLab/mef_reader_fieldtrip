@@ -142,17 +142,14 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
 	// check if the data is encrypted and/or the correctness of password
 	if (session->time_series_metadata.section_1 != NULL) {
 		if (session->time_series_metadata.section_1->section_2_encryption > 0 || session->time_series_metadata.section_1->section_2_encryption > 0) {
-			free_session(session, MEF_TRUE);
 			if (password == NULL)
 				mexErrMsgTxt("Error: data is encrypted, but no password is given, exiting...\n");
 			else
 				mexErrMsgTxt("Error: wrong password for encrypted data, exiting...\n");
-			
 		}
 	}
 	if (session->video_metadata.section_1 != NULL) {
 		if (session->video_metadata.section_1->section_2_encryption > 0 || session->video_metadata.section_1->section_2_encryption > 0) {
-			free_session(session, MEF_TRUE);
 			if (password == NULL)
 				mexErrMsgTxt("Error: data is encrypted, but no password is given, exiting...\n");
 			else
@@ -168,9 +165,6 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
 		plhs[0] = map_mef3_session(session, map_indices_flag);
 		
 	}		
-	
-	// free the session memory
-	free_session(session, MEF_TRUE);
 	
 	// 
 	return;
