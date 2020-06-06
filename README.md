@@ -27,7 +27,7 @@ Sample data
 ----------------
 A small sample dataset (~17 M) of MEF 2.1/3.0 is provided from this [link](https://app.box.com/s/wwkdwl51joavrblu40v075bz2gb5fwrf) on box.com.
 Look for the folder `sample_mef`and download it to your local computer.
-Two additional examples of reading MEF dataset, `ft_example_read_mef2p1.m` and `ft_example_read_mef3p0.m` are included in folder `sample_mef` as well.
+To test the toolbox using the sample data, open `test_mayo_mef.m` under directory `fieldtrip/test` and modify the variables according to the locations of the dataset.
 Two additional examples of reading MEF dataset, `ft_example_read_mef2p1.m` and `ft_example_read_mef3p0.m` are included in folder `sample_mef` as well.
 
     % =========================================================================
