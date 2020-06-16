@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/github/license/MultimodalNeuroimagingLab/mef_reader_fieldtrip.svg?style=plastic)](https://github.com/MultimodalNeuroimagingLab/mef_reader_fieldtrip)
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/MultimodalNeuroimagingLab/mef_reader_fieldtrip)
 [![@Dora](http://img.shields.io/twitter/follow/dora_hermes.svg?style=social)](https://twitter.com/dora_hermes?lang=en)
-![GitHub All Releases](https://img.shields.io/github/downloads/MultimodalNeuroimagingLab/mef_reader_fieldtrip/total?color=green&label=All%20downloads&style=plastic)
+[![GitHub All Releases](https://img.shields.io/github/downloads/MultimodalNeuroimagingLab/mef_reader_fieldtrip/total?color=green&label=All%20downloads&style=plastic)](https://github.com/MultimodalNeuroimagingLab/mef_reader_fieldtrip/releases/)
 
 MEF 2.1/3.0 Fieldtrip External Toolbox (mef_reader_fieldtrip)
 =============================================================
