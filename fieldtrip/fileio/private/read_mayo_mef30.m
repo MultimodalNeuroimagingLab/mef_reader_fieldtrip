@@ -1,4 +1,5 @@
 function mayo_out = read_mayo_mef30(varargin)
+
 % READ_MAYO_MEF30 read header, event and data from the files formatted in MEF 3.0
 %
 % Syntax:
@@ -10,23 +11,17 @@ function mayo_out = read_mayo_mef30(varargin)
 %
 % Input(s):
 %   filename        - [char] name of the file or folder of the dataset
-%   password        - [struct] (opt) password structure of MEF 3.0 data (see
-%                     MEFSession_3p0)
-%   sortchannel     - [char] (opt) sort channel order either alphabetically
-%                     'alphabet' or or numerically 'number' (default =
-%                     'alphabet')
-%   hdr             - [struct] (opt) header structure of the dataset (see
-%                     ft_read_header; default = struct([]))
+%   password        - [struct] (opt) password structure of MEF 3.0 data (see MEFSession_3p0)
+%   sortchannel     - [char] (opt) sort channel order either alphabetically 'alphabet' or 
+%                     numerically 'number' (default = 'alphabet')
+%   hdr             - [struct] (opt) header structure of the dataset (see FT_READ_HEADER; default = struct([]))
 %   begsample       - [num] (opt) first sample to read (default = [])
 %   endsample       - [num] (opt) last smaple to read (default = [])
-%   chanindx        - [num] (opt) list of channel indices to read (default
-%                     = [])
+%   chanindx        - [num] (opt) list of channel indices to read (default = [])
 %
 % Output(s):
-%   hdr             - [struct] header structure of the dataset (see 
-%                     FT_READ_HEADER)
-%   evt             - [struct] event structure of the dataset (see
-%                     FT_READ_EVENT)
+%   hdr             - [struct] header structure of the dataset (see FT_READ_HEADER)
+%   evt             - [struct] event structure of the dataset (see FT_READ_EVENT)
 %   dat             - [num] data read in
 %
 % Example:
@@ -35,7 +30,7 @@ function mayo_out = read_mayo_mef30(varargin)
 %
 % References:
 %
-% See also ft_filetype, ft_read_header, ft_read_event, ft_read_data.
+% See also FT_FILETYPE, FT_READ_HEADER, FT_READ_EVENT, FT_READ_DATA
 
 % Copyright 2020 Richard J. Cui. Created: Sat 03/21/2020  5:26:02.846 PM
 % $Revision: 0.6 $  $Date: Fri 05/15/2020 12:32:49.067 AM $
@@ -44,7 +39,7 @@ function mayo_out = read_mayo_mef30(varargin)
 % Mayo Clinic St. Mary Campus
 % Rochester, MN 55905
 %
-% Email: richard.cui@utoronto.ca (permanent), Cui.Jie@mayo.edu (official)
+% Email: richard.cui@utoronto.ca
 
 % =========================================================================
 % parse inputs

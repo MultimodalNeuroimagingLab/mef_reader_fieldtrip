@@ -222,8 +222,8 @@ cfg.coilaccuracy   = ft_getopt(cfg, 'coilaccuracy');        % is passed to low-l
 cfg.checkmaxfilter = ft_getopt(cfg, 'checkmaxfilter');      % this allows to read non-maxfiltered neuromag data recorded with internal active shielding
 cfg.montage        = ft_getopt(cfg, 'montage', 'no');
 cfg.updatesens     = ft_getopt(cfg, 'updatesens', 'no');    % in case a montage or rereferencing is specified
-cfg.chantype       = ft_getopt(cfg, 'chantype', {});        % 2017.10.10 AB required for NeuroOmega files
-cfg.password       = ft_getopt(cfg, 'password', []);        % is necessary to read MEF dataset
+cfg.chantype       = ft_getopt(cfg, 'chantype', {});        %2017.10.10 AB required for NeuroOmega files
+cfg.password       = ft_getopt(cfg, 'password', []);
 
 % these options relate to the actual preprocessing, it is necessary to specify here because of padding
 cfg.dftfilter      = ft_getopt(cfg, 'dftfilter', 'no');
@@ -591,10 +591,7 @@ else
       
       % read the raw data with padding on both sides of the trial - this
       % includes datapadding
-      dat = ft_read_data(cfg.datafile, 'header', hdr, 'begsample', begsample,...
-          'endsample', endsample, 'chanindx', rawindx,...
-          'checkboundary', strcmp(cfg.continuous, 'no'),...
-          'dataformat', cfg.dataformat, 'password', cfg.password);
+      dat = ft_read_data(cfg.datafile, 'header', hdr, 'begsample', begsample, 'endsample', endsample, 'chanindx', rawindx, 'checkboundary', strcmp(cfg.continuous, 'no'), 'dataformat', cfg.dataformat, 'password', cfg.password);
       
       % convert the data to another numeric precision, i.e. double, single or int32
       if ~isempty(cfg.precision)
