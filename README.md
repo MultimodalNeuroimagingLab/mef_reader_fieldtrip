@@ -56,7 +56,6 @@ The details of MEF file can be found at [here](https://www.mayo.edu/research/lab
 
 The c-mex code to read MEF 2.1 data is mainly developed from the work done by [Ben Brinkmann](https://github.com/benbrinkmann/mef_lib_2_1), Matt Stead, Dan Crepeau, and [Gregory Worrell](https://www.mayo.edu/research/faculty/worrell-gregory-a-m-d-ph-d/bio-00027235) from [Mayo Systems Electrophysiology Lab](https://msel.mayo.edu/codes.html),  Mayo Clinic, Rochester MN.
 
-The c-mex code for MEF 3.0 is mainly adapted from the work by [Max van den Boom](https://github.com/MaxvandenBoom/matmef) and [Dora Hermes](https://www.mayo.edu/research/faculty/hermes-miller-dora-ph-d/bio-20471548) at [Multimodal Neuroimaging Lab](https://github.com/MultimodalNeuroimagingLab), Mayo Clinic, Rochester MN.
 
 License
 -------
